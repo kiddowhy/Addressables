@@ -22,6 +22,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 83fa02597dd861f4cade7d6da892c62f
+    m_Address: Assets/audio/Moonlight - OkayMp3.Com.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f1c0c93c005cece40a1a83fde04cce37, type: 2}
   m_SchemaSet:

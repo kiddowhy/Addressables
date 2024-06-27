@@ -4,9 +4,22 @@ using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.AddressableAssets;
 
+[System.Serializable]
+public class AssetReferenceAudioClip : AssetReferenceT<AudioClip> 
+{
+    public AssetReferenceAudioClip(string guid) : base(guid)
+    {
+
+    }
+}
 public class AddressableSPawnObject : MonoBehaviour
 {
+    [SerializeField] private AssetReference assetReference;
+    [SerializeField] private AssetReferenceGameObject assetReferenceGameObject;
+    [SerializeField] private AssetReferenceAudioClip audioClip;
     // Start is called before the first frame update
+
+    private GameObject spawnedGO;
     void Start()
     {
         
@@ -17,22 +30,37 @@ public class AddressableSPawnObject : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.T))
         {
-            AsyncOperationHandle<GameObject> asyncOperationHandle = Addressables.LoadAssetAsync<GameObject>("Assets/Prefab/Sphere.prefab");
-            asyncOperationHandle.Completed += AsyncOperationHandle_Completed;
+            //Addressables.LoadAssetAsync<GameObject>("Assets/Prefab/Sphere.prefab").Completed +=  //assestLabelReference instead of string
+
+            assetReferenceGameObject.InstantiateAsync().Completed += (asyncOperation) => spawnedGO = asyncOperation.Result;
+
+            
+
+            /*
+             * assetReference.LoadAssetAsync<GameObject>().Completed +=
+                (asyncOperationHandle) =>
+                {
+                    if (asyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
+                    {
+                        Instantiate(asyncOperationHandle.Result);
+                        Debug.Log("loaded addressables");
+                    }
+                    else
+                    {
+                        Debug.Log("failed addressables");
+                    }
+                };
+            */
         }
-        
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            assetReferenceGameObject.ReleaseInstance(spawnedGO);
+        }
+
     }
 
-    private void AsyncOperationHandle_Completed(AsyncOperationHandle<GameObject> asyncOperationHandle)
+    private void AddressableSPawnObject_Completed(AsyncOperationHandle<GameObject> obj)
     {
-        if(asyncOperationHandle.Status == AsyncOperationStatus.Succeeded)
-        {
-            Instantiate(asyncOperationHandle.Result);
-            Debug.Log("loaded addressables");
-        }
-        else
-        {
-            Debug.Log("failed addressables");
-        }
+        throw new System.NotImplementedException();
     }
 }

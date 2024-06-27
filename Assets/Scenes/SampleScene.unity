@@ -338,6 +338,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cc9083aaefa14e4185e26f248326c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  assetReference:
+    m_AssetGUID: 6c04d7ec656b80a4fbed7e72b0d5f950
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  assetReferenceGameObject:
+    m_AssetGUID: 6c04d7ec656b80a4fbed7e72b0d5f950
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  audioClip:
+    m_AssetGUID: 83fa02597dd861f4cade7d6da892c62f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!4 &1362445231
 Transform:
   m_ObjectHideFlags: 0
